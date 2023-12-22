@@ -87,6 +87,15 @@ public class votingKiosk {
 
     private void verifiyBiometricData(BiometricData humanBioD, BiometricData passpBioD)
             throws BiometricVerificationFailedException {
+        if(!humanBioD.getFacialData().equals(passpBioD.getFacialData())){
+            throw new BiometricVerificationFailedException("Les dades facials no concorden");
+        }
+        System.out.println("Verificació facial OK!");
+        if(!humanBioD.getFingerprintData().equals(passpBioD.getFingerprintData())){
+            throw new BiometricVerificationFailedException("Les dades de les empremtes dactilars no concorden");
+        }
+        System.out.println("Verificació de les empremtes dactilars OK!");
+        System.out.println("Verificació de les dades biometriques de l'usuari OK.");
 
     }
     private void removeBiometricData () {
@@ -94,7 +103,14 @@ public class votingKiosk {
     }
 
     public void grantExplicitConsent (char cons) {
-
+        switch (cons){
+            case('C'):
+            case('c'):
+                System.out.println("S'ha acceptat el consentiment explícit");
+            case('X'):
+            case('x'):
+                System.out.println("No s'ha acceptat el consentiment");
+        }
     }
     public void readPassport () throws NotValidPassportException, PassportBiometricReadingException {
 
