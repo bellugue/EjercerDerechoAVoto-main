@@ -62,7 +62,7 @@ public class votingKiosk {
     }
     public void initOptionsNavigation () {
         for(VotingOption opt : scrutiny.getAllVotingOptions()){
-            System.out.println(opt.toString());
+            System.out.println(opt.getParty());
         }
         System.out.print("\nSeleccioni un partit a votar:\n");
     }
