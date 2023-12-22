@@ -28,7 +28,7 @@ public class votingKiosk {
     public votingKiosk(){currentPhase=1;}
 
     public void initVoting () {
-
+        System.out.println("S'ha seleccionat la votacio electronica");
     }
     public void setDocument (char opt) {
         switch (opt){
@@ -47,18 +47,6 @@ public class votingKiosk {
     public void enterAccount (String login, Password pssw) throws InvalidAccountException {
         localService.verifyAccount(login, pssw);
         System.out.println("L'usuari ha accedit correctament.");
-
-        /*
-        String userName = "babui";
-        if (login.equals(userName)) {
-            if (pssw.equals(Password.class)) {
-                System.err.println("Usuari i contrassenya correcte");
-            }
-            throw new InvalidAccountException("contrassenya incorrecta");
-
-        }
-        throw new InvalidAccountException("usuari inexistent");
-         */
     }
     public void confirmIdentif (char conf) throws InvalidDNIDocumException {
         switch(conf){
