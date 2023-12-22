@@ -11,4 +11,5 @@ public interface Scrutiny {
     int getNulls ();
     int getBlanks ();
     void getScrutinyResults ();
+    List<VotingOption> getAllVotingOptions();
 }

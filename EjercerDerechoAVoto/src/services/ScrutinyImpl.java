@@ -2,6 +2,7 @@ package services;
 
 import data.VotingOption;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,5 +81,14 @@ public class ScrutinyImpl implements Scrutiny{
         }
         System.out.println("Null votes : " + nullVotes);
         System.out.println("Blank votes : " + blankVotes);
+    }
+
+    @Override
+    public List<VotingOption> getAllVotingOptions(){
+        List<VotingOption> list = new ArrayList<>();
+        for (VotingOption vOpt : votation.keySet()){
+            list.add(vOpt);
+        }
+        return list;
     }
 }

@@ -61,7 +61,10 @@ public class votingKiosk {
         System.out.println("El nif " + nif + " és vàlid");
     }
     public void initOptionsNavigation () {
-
+        for(VotingOption opt : scrutiny.getAllVotingOptions()){
+            System.out.println(opt.toString());
+        }
+        System.out.print("\nSeleccioni un partit a votar:\n");
     }
     public void consultVotingOption (VotingOption vopt) {
         System.out.println(vopt.toString());
