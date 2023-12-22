@@ -45,7 +45,10 @@ public class votingKiosk {
         }
     }
     public void enterAccount (String login, Password pssw) throws InvalidAccountException {
+        localService.verifyAccount(login, pssw);
+        System.out.println("L'usuari ha accedit correctament.");
 
+        /*
         String userName = "babui";
         if (login.equals(userName)) {
             if (pssw.equals(Password.class)) {
@@ -55,6 +58,7 @@ public class votingKiosk {
 
         }
         throw new InvalidAccountException("usuari inexistent");
+         */
     }
     public void confirmIdentif (char conf) throws InvalidDNIDocumException {
         switch(conf){
