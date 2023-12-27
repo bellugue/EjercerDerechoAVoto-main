@@ -2,13 +2,13 @@ package data.biometricaldataperipherial;
 
 public class SingleBiometricData {
 
-    private Byte[] data;
+    private byte[] data;
 
     public SingleBiometricData(byte[] data){
         this.data = data;
     }
 
-    public Byte[] getData() {
+    public byte[] getData() {
         return data;
     }
 }

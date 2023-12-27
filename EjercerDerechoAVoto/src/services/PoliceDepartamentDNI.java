@@ -4,6 +4,7 @@ import data.Nif;
 import exceptions.NifIsNullException;
 import exceptions.NifNotValidException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PoliceDepartamentDNI implements PoliceDepartament{
@@ -11,6 +12,7 @@ public class PoliceDepartamentDNI implements PoliceDepartament{
     private List<Nif> validDNI;
 
     public PoliceDepartamentDNI() throws NifIsNullException, NifNotValidException {
+        validDNI = new ArrayList<>();
         validDNI.add(new Nif("11111111a"));
         validDNI.add(new Nif("22222222a"));
         validDNI.add(new Nif("33333333a"));
