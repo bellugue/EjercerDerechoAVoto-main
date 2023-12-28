@@ -29,7 +29,9 @@ public class votingKiosk {
     private Nif nif;
     private Boolean explicitContent = false;
     private Passport passport;
-    public votingKiosk(){currentPhase=1;}
+    public votingKiosk() {
+        currentPhase=1;
+    }
 
     public void initVoting () {
         System.out.println("S'ha seleccionat la votació electronica");
@@ -56,7 +58,7 @@ public class votingKiosk {
         currentPhase++;
     }
     public void confirmIdentif (char conf) throws InvalidDNIDocumException {
-        switch(conf){
+        switch(conf){   //Aquesta tasca li correspon al personal de suport que posteriorment indica el resultat?
             case('C'):
                 System.out.println("S'ha confirmat la identificació");
             case('X'):
@@ -149,10 +151,30 @@ public class votingKiosk {
     }
 
     public void readFaceBiometrics () throws HumanBiometricScanningException {
+        if (userData.getFacialData() == null) {
+            throw new HumanBiometricScanningException("Les dades facials no s'han llegit correctament.");
+        }
+
+        BiometricData passportBiometricData = passport.getUserData();
+        if (passportBiometricData.getFacialData() != userData.getFacialData()) {
+            System.err.println("Les dades no coincideixen.");   //Potser s'hauria de llençar una excepció
+        }
         currentPhase++;
     }
     public void readFingerPrintBiometrics () throws NotEnabledException, HumanBiometricScanningException,
             BiometricVerificationFailedException, ConnectException {
+        if (!explicitContent) {
+            throw new NotEnabledException("L'usuari no ha donat consentiment explícit.");
+        }
+
+        if (userData.getFingerprintData() == null) {
+            throw new HumanBiometricScanningException("Les empremptes dactilars no s'han llegit correctament.");
+        }
+
+        BiometricData passportBiometricData = passport.getUserData();
+        if (passportBiometricData.getFingerprintData() != userData.getFingerprintData()) {
+
+        }
         currentPhase++;
     }
 

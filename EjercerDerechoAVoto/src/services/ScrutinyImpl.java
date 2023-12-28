@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ScrutinyImpl implements Scrutiny{
+public class ScrutinyImpl implements Scrutiny {
     HashMap<VotingOption, Integer> votation;
     int nullVotes;
     int blankVotes;
@@ -50,7 +50,8 @@ public class ScrutinyImpl implements Scrutiny{
             return votation.get(vopt);
         }
         else{
-            return 0; //S'ha de mirar lo que es vol fer aqui, si es retorna 0 a un partit que no existeix o que
+            return 0;   //S'ha de mirar lo que es vol fer aqui, si es retorna 0 a un partit que no existeix o que
+                        //No s'ha de retornar res crec, vull dir, si un partit no existeix no es pot votar
         }
     }
 
