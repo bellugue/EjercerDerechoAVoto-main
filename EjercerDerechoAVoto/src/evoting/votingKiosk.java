@@ -144,7 +144,9 @@ public class votingKiosk {
         currentPhase++;
     }
     public void readPassport () throws NotValidPassportException, PassportBiometricReadingException {
-
+        passportBiometricReader.validatePassport();
+        passportData = passportBiometricReader.getPassportBiometricData();
+        nif = passportBiometricReader.getNifWithOCR();
         currentPhase++;
     }
 
