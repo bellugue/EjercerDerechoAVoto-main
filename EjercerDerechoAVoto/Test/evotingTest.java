@@ -1,6 +1,7 @@
 import data.Nif;
 import data.biometricaldataperipherial.SingleBiometricData;
 import evoting.votingKiosk;
+import exceptions.InvalidDocumentIdentificationTypeException;
 import exceptions.NifIsNullException;
 import exceptions.NifNotValidException;
 import exceptions.PasswordIsNullException;
@@ -38,5 +39,11 @@ public class evotingTest implements TestingIntf{
         assertEquals(vKiosk.getCurrentPhase(), 2);
     }
 
+
+    @Test
+    public void setDocumentTest() throws InvalidDocumentIdentificationTypeException {
+        vKiosk.setDocument('d');
+        assertEquals(vKiosk.getCurrentPhase(), 3);
+    }
 
 }

@@ -31,6 +31,7 @@ public class PassportReader implements PassportBiometricReader{
 
     @Override
     public BiometricData getPassportBiometricData() throws PassportBiometricReadingException {
+        //BiometricData BiometricData = new BiometricData();
         return null;
     }
 }
