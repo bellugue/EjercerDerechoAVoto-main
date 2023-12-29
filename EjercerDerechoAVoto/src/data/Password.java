@@ -13,6 +13,6 @@ final public class Password {
     }
 
     private boolean passwordIsValid(String password){
-        return password != null;
+        return password != null || password != "";
     }
 }

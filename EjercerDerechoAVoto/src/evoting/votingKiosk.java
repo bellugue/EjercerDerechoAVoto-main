@@ -5,6 +5,8 @@ import data.Passport;
 import data.Password;
 import data.VotingOption;
 import data.biometricaldataperipherial.BiometricData;
+import evoting.biometricdataperipherial.HumanBiometricScanner;
+import evoting.biometricdataperipherial.PassportBiometricReader;
 import exceptions.*;
 import exceptions.biometricaldataperipherial.BiometricVerificationFailedException;
 import exceptions.biometricaldataperipherial.HumanBiometricScanningException;
@@ -21,6 +23,8 @@ public class votingKiosk {
     private LocalService localService;
     private Scrutiny scrutiny;
     private PoliceDepartament policeDepartament;
+    private HumanBiometricScanner humanBiometricScanner;
+    private PassportBiometricReader passportBiometricReader;
 
     private int currentPhase;
     private BiometricData userData;
@@ -151,14 +155,7 @@ public class votingKiosk {
     }
 
     public void readFaceBiometrics () throws HumanBiometricScanningException {
-        if (userData.getFacialData() == null) {
-            throw new HumanBiometricScanningException("Les dades facials no s'han llegit correctament.");
-        }
-
-        BiometricData passportBiometricData = passport.getUserData();
-        if (passportBiometricData.getFacialData() != userData.getFacialData()) {
-            System.err.println("Les dades no coincideixen.");   //Potser s'hauria de llençar una excepció
-        }
+        humanBiometricScanner.scanFaceBiometrics(nif);
         currentPhase++;
     }
     public void readFingerPrintBiometrics () throws NotEnabledException, HumanBiometricScanningException,
