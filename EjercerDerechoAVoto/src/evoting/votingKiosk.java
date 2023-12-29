@@ -141,7 +141,6 @@ public class votingKiosk {
         }
         System.out.println("Verificació de les empremtes dactilars OK!");
         System.out.println("Verificació de les dades biometriques de l'usuari OK.");
-        currentPhase++;
     }
     private void removeBiometricData () {
         userData = null;
@@ -158,13 +157,11 @@ public class votingKiosk {
                 System.out.println("No s'ha acceptat el consentiment");
                 break;
         }
-        currentPhase++;
     }
     public void readPassport () throws NotValidPassportException, PassportBiometricReadingException {
         passportBiometricReader.validatePassport();
         passportData = passportBiometricReader.getPassportBiometricData();
         nif = passportBiometricReader.getNifWithOCR();
-        currentPhase++;
     }
 
     public void readFaceBiometrics () throws HumanBiometricScanningException {
