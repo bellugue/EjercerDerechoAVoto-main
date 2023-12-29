@@ -7,7 +7,7 @@ import exceptions.NifNotValidException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PoliceDepartamentDNI implements PoliceDepartament{
+public class PoliceDepartamentDNI implements PoliceDepartament {
 
     private List<Nif> validDNI;
 
