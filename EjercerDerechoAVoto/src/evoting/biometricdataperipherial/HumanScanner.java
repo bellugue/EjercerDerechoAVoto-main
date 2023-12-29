@@ -27,7 +27,7 @@ public class HumanScanner implements HumanBiometricScanner{
         return new SingleBiometricData("FingerPrintData1".getBytes());
     }
 
-    public boolean setError(){
+    public void setError(){
         error = true;
     }
 }
