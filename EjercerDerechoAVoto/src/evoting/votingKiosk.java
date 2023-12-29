@@ -43,7 +43,9 @@ public class votingKiosk {
         System.out.println("S'ha seleccionat la votació electronica");
         currentPhase++;
     }
-    public void setDocument (char opt) throws InvalidDocumentIdentificationTypeException {
+    public void setDocument (char opt) throws InvalidDocumentIdentificationTypeException, ProceduralException {
+        if(currentPhase != 2)
+            throw new ProceduralException("setDocument executat a un temps erroni");
         switch (opt){
             case 'd':
             case 'D':
@@ -58,12 +60,16 @@ public class votingKiosk {
         }
         currentPhase++;
     }
-    public void enterAccount (String login, Password pssw) throws InvalidAccountException {
+    public void enterAccount (String login, Password pssw) throws InvalidAccountException, ProceduralException {
+        if(currentPhase != 3)
+            throw new ProceduralException("enterAccount executat a un temps erroni");
         localService.verifyAccount(login, pssw);
         System.out.println("L'usuari ha accedit correctament.");
         currentPhase++;
     }
-    public void confirmIdentif (char conf) throws InvalidDNIDocumException {
+    public void confirmIdentif (char conf) throws InvalidDNIDocumException, ProceduralException {
+        if(currentPhase != 4)
+            throw new ProceduralException("confirmIdentif executat a un temps erroni");
         switch(conf){   //Aquesta tasca li correspon al personal de suport que posteriorment indica el resultat?
             case('C'):
                 System.out.println("S'ha confirmat la identificació");
@@ -72,7 +78,9 @@ public class votingKiosk {
         }
         currentPhase++;
     }
-    public void enterNif (Nif nif) throws NotEnabledException, ConnectException {
+    public void enterNif (Nif nif) throws NotEnabledException, ConnectException, ProceduralException {
+        if(currentPhase != 5)
+            throw new ProceduralException("enterNif executat a un temps erroni");
         electoralOrganism.canVote(nif);
         this.nif = nif;
         System.out.println("El nif " + nif + " és vàlid");

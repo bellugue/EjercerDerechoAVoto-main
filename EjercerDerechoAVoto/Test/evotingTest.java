@@ -38,7 +38,7 @@ public class evotingTest implements TestingIntf{
 
 
     @Test
-    public void setDocumentTest() throws InvalidDocumentIdentificationTypeException {
+    public void setDocumentTest() throws InvalidDocumentIdentificationTypeException, ProceduralException {
         vKiosk.setDocument('d');
         assertEquals(vKiosk.getCurrentPhase(), 3);
     }
