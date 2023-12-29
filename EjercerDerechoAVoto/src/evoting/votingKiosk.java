@@ -86,26 +86,34 @@ public class votingKiosk {
         System.out.println("El nif " + nif + " és vàlid");
         currentPhase++;
     }
-    public void initOptionsNavigation () {
+    public void initOptionsNavigation () throws ProceduralException {
+        if(currentPhase != 6)
+            throw new ProceduralException("InitOptionsNavigation executat a un temps erroni");
         for(VotingOption opt : scrutiny.getAllVotingOptions()){
             System.out.println(opt.getParty());
         }
         System.out.print("\nSeleccioni un partit a votar:\n");
         currentPhase++;
     }
-    public void consultVotingOption (VotingOption vopt) {
+    public void consultVotingOption (VotingOption vopt) throws ProceduralException {
+        if(currentPhase != 7)
+            throw new ProceduralException("InitVoting executat a un temps erroni");
         System.out.println("Informació relacionada de " + vopt.getParty());
         System.out.println(vopt.toString());
         currentPhase++;
     }
     public void vote () throws ProceduralException {
+        if(currentPhase != 8)
+            throw new ProceduralException("InitVoting executat a un temps erroni");
         if(option == null){
             throw new ProceduralException("Error -> S'ha votat un partit sense seleccionar-lo.");
         }
         System.out.println("S'ha seleccionat per votar el partit " + option.getParty());
         currentPhase++;
     }
-    public void confirmVotingOption (char conf) throws ConnectException {
+    public void confirmVotingOption (char conf) throws ConnectException, ProceduralException {
+        if(currentPhase != 9)
+            throw new ProceduralException("InitVoting executat a un temps erroni");
         switch (conf){
             case('C'):
             case('c'):
