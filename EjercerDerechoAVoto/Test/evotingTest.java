@@ -11,7 +11,6 @@ import services.*;
 import static org.junit.Assert.*;
 
 public class evotingTest implements TestingIntf{
-    Passport passport;
     ElectoralOrganism electoralOrganism;
     LocalService localService;
     Scrutiny scrutiny;
@@ -21,9 +20,6 @@ public class evotingTest implements TestingIntf{
     @BeforeEach
     @Override
     public void initialize() throws NifIsNullException, NifNotValidException, PasswordIsNullException {
-        passport = new Passport();
-        passport.setNif(new Nif("11111111a"));
-        passport.setUserData(new SingleBiometricData("FacialData1".getBytes()), new SingleBiometricData("FingerPrintsData1".getBytes()));
         electoralOrganism = new ElectoralOrganismImpl();
         localService = new LocalServiceImpl();
         scrutiny = new ScrutinyImpl();

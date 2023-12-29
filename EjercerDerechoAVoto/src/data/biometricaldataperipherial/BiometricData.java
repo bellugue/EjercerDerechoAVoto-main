@@ -10,6 +10,14 @@ public class BiometricData {
         this.fingerprintData = fingerprintData;
     }
 
+    public void setFacialData(SingleBiometricData facialData){
+        this.facialData = facialData;
+    }
+
+    public void setFingerprintData(SingleBiometricData fingerprintData){
+        this.fingerprintData = fingerprintData;
+    }
+
     public SingleBiometricData getFacialData(){
         return facialData;
     }

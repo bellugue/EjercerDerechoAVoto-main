@@ -4,6 +4,7 @@ import data.Nif;
 import data.Password;
 import data.VotingOption;
 import data.biometricaldataperipherial.BiometricData;
+import data.biometricaldataperipherial.SingleBiometricData;
 import evoting.biometricdataperipherial.HumanBiometricScanner;
 import evoting.biometricdataperipherial.PassportBiometricReader;
 import exceptions.*;
@@ -148,18 +149,18 @@ public class votingKiosk {
     }
 
     public void readFaceBiometrics () throws HumanBiometricScanningException {
-        humanBiometricScanner.scanFaceBiometrics(nif);
-        currentPhase++;
+       SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
+       userData.setFacialData(facial);
+       currentPhase++;
     }
     public void readFingerPrintBiometrics () throws NotEnabledException, HumanBiometricScanningException,
-            BiometricVerificationFailedException, ConnectException {
-        if (!explicitContent) {
-            throw new NotEnabledException("L'usuari no ha donat consentiment explícit.");
-        }
+            BiometricVerificationFailedException, ConnectException{
+        SingleBiometricData fingerprints = humanBiometricScanner.scanFingerprintBiometrics(nif);
+        userData.setFingerprintData(fingerprints);
 
-        if (userData.getFingerprintData() == null) {
-            throw new HumanBiometricScanningException("Les empremptes dactilars no s'han llegit correctament.");
-        }
+        verifiyBiometricData(userData, passportData);
+        removeBiometricData();
+        electoralOrganism.canVote(nif);
 
         currentPhase++;
     }
