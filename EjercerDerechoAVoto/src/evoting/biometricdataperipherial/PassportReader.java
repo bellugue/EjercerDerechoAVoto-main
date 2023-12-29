@@ -2,13 +2,21 @@ package evoting.biometricdataperipherial;
 
 import data.Nif;
 import data.biometricaldataperipherial.BiometricData;
+import exceptions.NifIsNullException;
+import exceptions.NifNotValidException;
 import exceptions.NotValidPassportException;
 import exceptions.biometricaldataperipherial.PassportBiometricReadingException;
+import services.PoliceDepartament;
 import services.PoliceDepartamentDNI;
 
 public class PassportReader implements PassportBiometricReader{
-    PoliceDepartamentDNI policeDepartamentDNI;
+    PoliceDepartament policeDepartamentDNI;
     Nif nif;
+
+    public PassportReader() throws NifIsNullException, NifNotValidException {
+        policeDepartamentDNI = new PoliceDepartamentDNI();
+    }
+
     @Override
     public void validatePassport() throws NotValidPassportException {
         if (!policeDepartamentDNI.isDNIValid(nif)) {
