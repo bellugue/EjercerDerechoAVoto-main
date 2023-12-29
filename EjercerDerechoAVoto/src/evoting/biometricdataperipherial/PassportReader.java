@@ -18,7 +18,7 @@ public class PassportReader implements PassportBiometricReader{
 
     @Override
     public Nif getNifWithOCR() {
-        return null;
+        return nif;
     }
 
     @Override
