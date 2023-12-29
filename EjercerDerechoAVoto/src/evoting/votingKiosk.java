@@ -1,7 +1,6 @@
 package evoting;
 
 import data.Nif;
-import data.Passport;
 import data.Password;
 import data.VotingOption;
 import data.biometricaldataperipherial.BiometricData;
@@ -28,11 +27,11 @@ public class votingKiosk {
 
     private int currentPhase;
     private BiometricData userData;
+    private BiometricData passportData;
     private VotingOption option;
     private Boolean vote = false;
     private Nif nif;
     private Boolean explicitContent = false;
-    private Passport passport;
     public votingKiosk() {
         currentPhase=1;
     }
@@ -143,14 +142,8 @@ public class votingKiosk {
         }
         currentPhase++;
     }
-    public void readPassport (Passport passport) throws NotValidPassportException, PassportBiometricReadingException {
-        if(!policeDepartament.isDNIValid(passport.getNif())){
-            throw new NotValidPassportException("Passport amb nif " + nif + " no és valid.");
-        }
-        BiometricData passportData = passport.getUserData();
-        if(passportData == null){
-            throw new PassportBiometricReadingException("No s'ha pogut llegir correctament les dades biometriques del passaport");
-        }
+    public void readPassport () throws NotValidPassportException, PassportBiometricReadingException {
+
         currentPhase++;
     }
 
@@ -168,10 +161,6 @@ public class votingKiosk {
             throw new HumanBiometricScanningException("Les empremptes dactilars no s'han llegit correctament.");
         }
 
-        BiometricData passportBiometricData = passport.getUserData();
-        if (passportBiometricData.getFingerprintData() != userData.getFingerprintData()) {
-
-        }
         currentPhase++;
     }
 

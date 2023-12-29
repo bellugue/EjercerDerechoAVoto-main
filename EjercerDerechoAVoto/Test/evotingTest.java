@@ -1,5 +1,4 @@
 import data.Nif;
-import data.Passport;
 import data.biometricaldataperipherial.SingleBiometricData;
 import evoting.votingKiosk;
 import exceptions.NifIsNullException;
