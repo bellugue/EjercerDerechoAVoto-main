@@ -145,7 +145,6 @@ public class votingKiosk {
     }
     private void removeBiometricData () {
         userData = null;
-        currentPhase++;
     }
 
     public void grantExplicitConsent (char cons) {
@@ -171,7 +170,6 @@ public class votingKiosk {
     public void readFaceBiometrics () throws HumanBiometricScanningException {
        SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
        userData.setFacialData(facial);
-       currentPhase++;
     }
     public void readFingerPrintBiometrics () throws NotEnabledException, HumanBiometricScanningException,
             BiometricVerificationFailedException, ConnectException{
@@ -181,8 +179,6 @@ public class votingKiosk {
         verifiyBiometricData(userData, passportData);
         removeBiometricData();
         electoralOrganism.canVote(nif);
-
-        currentPhase++;
     }
 
     private void finalizeSession () {
