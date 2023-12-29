@@ -1,10 +1,7 @@
 import data.Nif;
 import data.biometricaldataperipherial.SingleBiometricData;
 import evoting.votingKiosk;
-import exceptions.InvalidDocumentIdentificationTypeException;
-import exceptions.NifIsNullException;
-import exceptions.NifNotValidException;
-import exceptions.PasswordIsNullException;
+import exceptions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import services.*;
@@ -34,7 +31,7 @@ public class evotingTest implements TestingIntf{
     }
     @Override
     @Test
-    public void initVotingTest(){
+    public void initVotingTest() throws ProceduralException {
         vKiosk.initVoting();
         assertEquals(vKiosk.getCurrentPhase(), 2);
     }
@@ -45,5 +42,6 @@ public class evotingTest implements TestingIntf{
         vKiosk.setDocument('d');
         assertEquals(vKiosk.getCurrentPhase(), 3);
     }
-    //t
+
+
 }

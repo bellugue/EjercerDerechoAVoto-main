@@ -37,7 +37,9 @@ public class votingKiosk {
         currentPhase=1;
     }
 
-    public void initVoting () {
+    public void initVoting () throws ProceduralException {
+        if(currentPhase != 1)
+            throw new ProceduralException("InitVoting executat a un temps erroni");
         System.out.println("S'ha seleccionat la votació electronica");
         currentPhase++;
     }
