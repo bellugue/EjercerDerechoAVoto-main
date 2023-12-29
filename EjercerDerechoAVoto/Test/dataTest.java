@@ -20,13 +20,13 @@ public class dataTest implements dataTestingIntf {
     @Override
     @Test
     public void nifIsNull() throws NifIsNullException {
-        //No se com acabar de comprovar aixo
         assertThrows(NifIsNullException.class, () -> nif = new Nif(null));
     }
 
     @Override
+    @Test
     public void nifIsNotValid() throws NifNotValidException {
-
+        assertThrows(NifNotValidException.class, () -> nif = new Nif(numberOfNif));
     }
 
     @Override
