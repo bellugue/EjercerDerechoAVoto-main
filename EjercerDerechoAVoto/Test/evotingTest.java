@@ -45,5 +45,5 @@ public class evotingTest implements TestingIntf{
         vKiosk.setDocument('d');
         assertEquals(vKiosk.getCurrentPhase(), 3);
     }
-
+    //t
 }
