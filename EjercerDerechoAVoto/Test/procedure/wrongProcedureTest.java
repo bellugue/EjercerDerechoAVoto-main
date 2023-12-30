@@ -2,6 +2,7 @@ package procedure;
 
 import data.Nif;
 import data.Password;
+import data.VotingOption;
 import evoting.votingKiosk;
 import exceptions.*;
 import services.*;
@@ -70,24 +71,25 @@ public class wrongProcedureTest implements ProcedureTests{
     @Override
     @Test
     public void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
-
+        assertThrows(ProceduralException.class, () -> vKiosk.initOptionsNavigation());
     }
 
     @Override
     @Test
     public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
-
+        VotingOption option = new VotingOption("party1");
+        assertThrows(ProceduralException.class, () -> vKiosk.consultVotingOption(option));
     }
 
     @Override
     @Test
     public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
-
+        assertThrows(ProceduralException.class, () -> vKiosk.vote());
     }
 
     @Override
     @Test
     public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
-
+        assertThrows(ProceduralException.class, () -> vKiosk.confirmVotingOption('C'));
     }
 }
