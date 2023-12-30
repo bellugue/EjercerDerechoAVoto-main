@@ -29,16 +29,22 @@ public class ElectoralOrganismImpl implements ElectoralOrganism{
         }
 
         if(isEnabledInElectoralOrganism(nif)){
-            if(counts.get(nif) == true){
-                throw new NotEnabledException("User with nif " + nif + "has aleady voted");
-            }
+            System.out.println("L'usuari amb nif " + nif.getNif() + " pot votar.");
         }
         else
-            throw new NotEnabledException("User with nif " + nif + " is not allowed in this electoral organism");
+            throw new NotEnabledException("User with nif " + nif.getNif() + " is not allowed in this electoral organism");
     }
 
     private boolean isEnabledInElectoralOrganism(Nif nif) {
-        return counts.containsKey(nif);
+        for(Nif countNif : counts.keySet()){
+            if(countNif.getNif().equals(nif.getNif())){
+                if(counts.get(countNif) == false){
+                    return true;
+                }
+                break;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -53,4 +59,5 @@ public class ElectoralOrganismImpl implements ElectoralOrganism{
     public void setConnectionError(boolean connectionError) {
         this.connectionError = connectionError;
     }
+
 }

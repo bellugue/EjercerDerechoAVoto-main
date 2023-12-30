@@ -18,13 +18,17 @@ public class LocalServiceImpl implements LocalService{
     }
     @Override
     public void verifyAccount(String login, Password pssw) throws InvalidAccountException {
-        if (validAccounts.containsKey(login)){
-            if (!(validAccounts.get(login) == pssw)){
-                throw new InvalidAccountException("The password is not right");
+        for(String loginValue : validAccounts.keySet()){
+            if(loginValue.equals(login)){
+                Password password = validAccounts.get(login);
+                if(!password.getPassword().equals(pssw.getPassword())){
+                    throw new InvalidAccountException("The password is not right");
+                }
+                else{
+                    return;
+                }
             }
         }
-        else{
-            throw  new InvalidAccountException("The user is not right");
-        }
+        throw new InvalidAccountException("The user is not right");
     }
 }

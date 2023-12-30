@@ -32,7 +32,9 @@ final public class Nif {
         }
         Character character = nif.charAt(8);
         return Character.isLetter(character);
+    }
 
-        //else if(nif.startsWith("X") || nif.startsWith("Y") || nif.startsWith("Z"))
+    public String getNif(){
+        return this.Nif;
     }
 }

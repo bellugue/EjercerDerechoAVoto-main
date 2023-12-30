@@ -1,4 +1,5 @@
-import data.Nif;
+package data;
+
 import exceptions.NifIsNullException;
 import exceptions.NifNotValidException;
 import exceptions.PasswordIsNullException;

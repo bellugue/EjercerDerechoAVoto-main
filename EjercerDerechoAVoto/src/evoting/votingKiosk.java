@@ -73,6 +73,7 @@ public class votingKiosk {
         switch(conf){   //Aquesta tasca li correspon al personal de suport que posteriorment indica el resultat?
             case('C'):
                 System.out.println("S'ha confirmat la identificació");
+                break;
             case('X'):
                 throw new InvalidDNIDocumException("El document no es vàlid");
         }
@@ -83,7 +84,7 @@ public class votingKiosk {
             throw new ProceduralException("enterNif executat a un temps erroni");
         electoralOrganism.canVote(nif);
         this.nif = nif;
-        System.out.println("El nif " + nif + " és vàlid");
+        System.out.println("El nif " + nif.getNif() + " és vàlid");
         currentPhase++;
     }
     public void initOptionsNavigation () throws ProceduralException {
@@ -100,6 +101,7 @@ public class votingKiosk {
             throw new ProceduralException("InitVoting executat a un temps erroni");
         System.out.println("Informació relacionada de " + vopt.getParty());
         System.out.println(vopt.toString());
+        option = vopt;
         currentPhase++;
     }
     public void vote () throws ProceduralException {
@@ -122,6 +124,7 @@ public class votingKiosk {
             case('X'):
             case('x'):
                 System.out.println("S'ha denegat l'opció seleccionada, seleccioni una opció.");
+                currentPhase = 7;
                 return;
         }
         scrutiny.scrutinize(option);
@@ -158,7 +161,7 @@ public class votingKiosk {
                 break;
         }
     }
-    public void readPassport () throws NotValidPassportException, PassportBiometricReadingException {
+    public void readPassport () throws NotValidPassportException, PassportBiometricReadingException, NifIsNullException, NifNotValidException {
         passportBiometricReader.validatePassport();
         passportData = passportBiometricReader.getPassportBiometricData();
         nif = passportBiometricReader.getNifWithOCR();

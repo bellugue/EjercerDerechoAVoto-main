@@ -15,4 +15,8 @@ final public class Password {
     private boolean passwordIsValid(String password){
         return password != null || password != "";
     }
+
+    public String getPassword(){
+        return this.Password;
+    }
 }

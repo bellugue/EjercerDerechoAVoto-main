@@ -1,3 +1,5 @@
+package data;
+
 import exceptions.NifIsNullException;
 import exceptions.NifNotValidException;
 import exceptions.PasswordIsNullException;

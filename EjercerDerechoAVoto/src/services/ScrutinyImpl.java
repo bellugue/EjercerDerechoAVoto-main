@@ -13,6 +13,12 @@ public class ScrutinyImpl implements Scrutiny {
 
     public ScrutinyImpl(){
         votation = new HashMap<>();
+        VotingOption o1 = new VotingOption("party1");
+        votation.put(o1, 0);
+        VotingOption o2 = new VotingOption("party2");
+        votation.put(o2,0);
+        VotingOption o3 = new VotingOption("party3");
+        votation.put(o3, 0);
         nullVotes = 0;
         blankVotes = 0;
     }
