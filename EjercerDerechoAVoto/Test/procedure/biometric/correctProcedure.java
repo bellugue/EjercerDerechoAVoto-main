@@ -1,4 +1,5 @@
 package procedure.biometric;
+import data.VotingOption;
 import evoting.biometricdataperipherial.HumanBiometricScanner;
 import evoting.biometricdataperipherial.HumanScanner;
 import evoting.biometricdataperipherial.PassportBiometricReader;
@@ -107,24 +108,55 @@ public class correctProcedure implements ProcedureTest{
         vKiosk.readPassport();
         vKiosk.readFaceBiometrics();
         vKiosk.readFingerPrintBiometrics();
-        assertEquals(vKiosk.getCurrentPhase(), 7);
+        vKiosk.initOptionsNavigation();
+        assertEquals(vKiosk.getCurrentPhase(), 8);
     }
 
     @Override
     @Test
-    public void consultVotingOption() {
-
+    public void consultVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException {
+        VotingOption option = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        vKiosk.readFingerPrintBiometrics();
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(option);
+        assertEquals(vKiosk.getCurrentPhase(), 9);
     }
 
     @Override
     @Test
-    public void vote() {
-
+    public void vote() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException {
+        VotingOption option = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        vKiosk.readFingerPrintBiometrics();
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(option);
+        vKiosk.vote();
+        assertEquals(vKiosk.getCurrentPhase(), 10);
     }
 
     @Override
     @Test
-    public void confirmVotingOption() {
-
+    public void confirmVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException {
+        VotingOption option = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        vKiosk.readFingerPrintBiometrics();
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(option);
+        vKiosk.vote();
+        vKiosk.confirmVotingOption('C');
+        assertEquals(vKiosk.getCurrentPhase(), 11);
     }
 }

@@ -30,7 +30,7 @@ public class votingKiosk {
     private BiometricData userData;
     private BiometricData passportData;
     private VotingOption option;
-    private Boolean vote = false;
+    private boolean Biometric = false;
     private Nif nif;
     private Boolean explicitContent = false;
     public votingKiosk() {
@@ -55,6 +55,7 @@ public class votingKiosk {
             case 'p': //Passaport (X2)
             case 'P':
                 System.out.println("PASSPORT");
+                Biometric = true;
                 break;
             default: //Lo que s'ha entrar no es ni un DNI ni passaport
                 throw new InvalidDocumentIdentificationTypeException("El document ha de ser o bé DNI <D/d>, o bé passaport <P/p>");
@@ -89,8 +90,16 @@ public class votingKiosk {
         currentPhase++;
     }
     public void initOptionsNavigation () throws ProceduralException {
-        if(currentPhase != 6)
-            throw new ProceduralException("InitOptionsNavigation executat a un temps erroni");
+        if(Biometric){
+            if(currentPhase != 7){
+                throw new ProceduralException("InitOptionsNavigation executat a un temps erroni");
+            }
+        }
+        else{
+            if(currentPhase != 6)
+                throw new ProceduralException("InitOptionsNavigation executat a un temps erroni");
+        }
+
         for(VotingOption opt : scrutiny.getAllVotingOptions()){
             System.out.println(opt.getParty());
         }
@@ -98,16 +107,30 @@ public class votingKiosk {
         currentPhase++;
     }
     public void consultVotingOption (VotingOption vopt) throws ProceduralException {
-        if(currentPhase != 7)
-            throw new ProceduralException("InitVoting executat a un temps erroni");
+        if(Biometric){
+            if(currentPhase != 8)
+                throw new ProceduralException("consultVotingOption executat a un temps erroni");
+        }
+        else{
+            if(currentPhase != 7)
+                throw new ProceduralException("consultVotingOption executat a un temps erroni");
+        }
+
         System.out.println("Informació relacionada de " + vopt.getParty());
         System.out.println(vopt.toString());
         option = vopt;
         currentPhase++;
     }
     public void vote () throws ProceduralException {
-        if(currentPhase != 8)
-            throw new ProceduralException("InitVoting executat a un temps erroni");
+        if(Biometric){
+            if(currentPhase != 9)
+                throw new ProceduralException("vote executat a un temps erroni");
+        }
+        else {
+            if(currentPhase != 8)
+                throw new ProceduralException("vote executat a un temps erroni");
+        }
+
         if(option == null){
             throw new ProceduralException("Error -> S'ha votat un partit sense seleccionar-lo.");
         }
@@ -115,8 +138,15 @@ public class votingKiosk {
         currentPhase++;
     }
     public void confirmVotingOption (char conf) throws ConnectException, ProceduralException {
-        if(currentPhase != 9)
-            throw new ProceduralException("InitVoting executat a un temps erroni");
+        if(Biometric){
+            if(currentPhase != 10)
+                throw new ProceduralException("confirmVotingOption executat a un temps erroni");
+        }
+        else{
+            if(currentPhase != 9)
+                throw new ProceduralException("confirmVotingOption executat a un temps erroni");
+        }
+
         switch (conf){
             case('C'):
             case('c'):
