@@ -10,12 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class dataTest implements dataTestingIntf {
     private Nif nif;
-    private String numberOfNif = "aaa";
+    private Password password;
 
     @Override
     @BeforeEach
-    public void initNif() throws NifIsNullException, NifNotValidException {
-
+    public void init(){
+        nif = null;
+        password = null;
     }
 
     @Override
@@ -27,16 +28,26 @@ public class dataTest implements dataTestingIntf {
     @Override
     @Test
     public void nifIsNotValid() throws NifNotValidException {
-        assertThrows(NifNotValidException.class, () -> nif = new Nif(numberOfNif));
+        assertThrows(NifNotValidException.class, () -> nif = new Nif("aaa"));
     }
 
     @Override
-    public void initPassword() throws PasswordIsNullException {
+    public void nifIsValid() {
 
     }
 
     @Override
-    public void password() throws PasswordIsNullException {
+    public void passwordIsNull() throws PasswordIsNullException {
+
+    }
+
+    @Override
+    public void passwordIsEmpty() {
+
+    }
+
+    @Override
+    public void passwordIsCorrect() {
 
     }
 }

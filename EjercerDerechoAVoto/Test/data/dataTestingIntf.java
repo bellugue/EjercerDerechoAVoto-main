@@ -5,9 +5,11 @@ import exceptions.NifNotValidException;
 import exceptions.PasswordIsNullException;
 
 public interface dataTestingIntf {
-    void initNif() throws NifIsNullException, NifNotValidException;
+    void init();
     void nifIsNull() throws NifIsNullException, NifNotValidException;
     void nifIsNotValid() throws NifIsNullException, NifNotValidException;
-    void initPassword() throws PasswordIsNullException;
-    void password() throws PasswordIsNullException;
+    void nifIsValid();
+    void passwordIsNull() throws PasswordIsNullException;
+    void passwordIsEmpty();
+    void passwordIsCorrect();
 }
