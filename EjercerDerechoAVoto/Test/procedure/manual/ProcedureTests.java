@@ -1,4 +1,4 @@
-package procedure;
+package procedure.manual;
 
 import exceptions.*;
 

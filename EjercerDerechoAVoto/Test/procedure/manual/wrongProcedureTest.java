@@ -1,4 +1,4 @@
-package procedure;
+package procedure.manual;
 
 import data.Nif;
 import data.Password;
@@ -8,7 +8,7 @@ import exceptions.*;
 import services.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import services.*;
+
 import static org.junit.Assert.*;
 
 import java.net.ConnectException;
@@ -28,7 +28,6 @@ public class wrongProcedureTest implements ProcedureTests{
         policeDepartament = new PoliceDepartamentDNI();
 
         vKiosk = new votingKiosk();
-        vKiosk.setPoliceDepartament(policeDepartament);
         vKiosk.setElectoralOrganism(electoralOrganism);
         vKiosk.setScrutiny(scrutiny);
         vKiosk.setLocalService(localService);

@@ -1,4 +1,4 @@
-package procedure;
+package procedure.manual;
 
 import data.Nif;
 import data.Password;
@@ -17,7 +17,6 @@ public class correctProcedureTest implements ProcedureTests {
     ElectoralOrganism electoralOrganism;
     LocalService localService;
     Scrutiny scrutiny;
-    PoliceDepartament policeDepartament;
     votingKiosk vKiosk;
 
     @BeforeEach
@@ -26,10 +25,8 @@ public class correctProcedureTest implements ProcedureTests {
         electoralOrganism = new ElectoralOrganismImpl();
         localService = new LocalServiceImpl();
         scrutiny = new ScrutinyImpl();
-        policeDepartament = new PoliceDepartamentDNI();
 
         vKiosk = new votingKiosk();
-        vKiosk.setPoliceDepartament(policeDepartament);
         vKiosk.setElectoralOrganism(electoralOrganism);
         vKiosk.setScrutiny(scrutiny);
         vKiosk.setLocalService(localService);

@@ -22,7 +22,6 @@ public class votingKiosk {
     private ElectoralOrganism electoralOrganism;
     private LocalService localService;
     private Scrutiny scrutiny;
-    private PoliceDepartament policeDepartament;
     private HumanBiometricScanner humanBiometricScanner;
     private PassportBiometricReader passportBiometricReader;
 
@@ -160,6 +159,7 @@ public class votingKiosk {
                 System.out.println("No s'ha acceptat el consentiment");
                 break;
         }
+        currentPhase++;
     }
     public void readPassport () throws NotValidPassportException, PassportBiometricReadingException, NifIsNullException, NifNotValidException {
         passportBiometricReader.validatePassport();
@@ -198,8 +198,12 @@ public class votingKiosk {
         this.scrutiny = scrutiny;
     }
 
-    public void setPoliceDepartament(PoliceDepartament policeDepartament) {
-        this.policeDepartament = policeDepartament;
+    public void setHumanBiometricScanner(HumanBiometricScanner humanBiometricScanner) {
+        this.humanBiometricScanner = humanBiometricScanner;
+    }
+
+    public void setPassportBiometricReader(PassportBiometricReader passportBiometricReader) {
+        this.passportBiometricReader = passportBiometricReader;
     }
 
     public int getCurrentPhase(){
