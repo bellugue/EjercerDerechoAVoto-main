@@ -155,7 +155,12 @@ public class votingKiosk {
             case('X'):
             case('x'):
                 System.out.println("S'ha denegat l'opció seleccionada, seleccioni una opció.");
-                currentPhase = 7;
+                if(Biometric){
+                    currentPhase = 8;
+                }
+                else{
+                    currentPhase = 7;
+                }
                 return;
         }
         scrutiny.scrutinize(option);
