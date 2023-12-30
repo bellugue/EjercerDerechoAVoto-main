@@ -5,6 +5,7 @@ import evoting.biometricdataperipherial.PassportBiometricReader;
 import evoting.biometricdataperipherial.PassportReader;
 import evoting.votingKiosk;
 import exceptions.*;
+import exceptions.biometricaldataperipherial.BiometricVerificationFailedException;
 import exceptions.biometricaldataperipherial.HumanBiometricScanningException;
 import exceptions.biometricaldataperipherial.PassportBiometricReadingException;
 import org.junit.jupiter.api.Test;
@@ -87,14 +88,26 @@ public class correctProcedure implements ProcedureTest{
 
     @Override
     @Test
-    public void readFingerPrintBiometrics() {
-
+    public void readFingerPrintBiometrics() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        vKiosk.readFingerPrintBiometrics();
+        assertEquals(vKiosk.getCurrentPhase(), 7);
     }
 
     @Override
     @Test
-    public void initOptionsNavigator() {
-
+    public void initOptionsNavigator() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        vKiosk.readFingerPrintBiometrics();
+        assertEquals(vKiosk.getCurrentPhase(), 7);
     }
 
     @Override

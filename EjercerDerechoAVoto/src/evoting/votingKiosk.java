@@ -17,6 +17,7 @@ import services.PoliceDepartament;
 import services.Scrutiny;
 
 import java.net.ConnectException;
+import java.util.Arrays;
 
 public class votingKiosk {
     private ElectoralOrganism electoralOrganism;
@@ -135,11 +136,11 @@ public class votingKiosk {
 
     private void verifiyBiometricData(BiometricData humanBioD, BiometricData passpBioD)
             throws BiometricVerificationFailedException {
-        if(!humanBioD.getFacialData().equals(passpBioD.getFacialData())){
+        if(!Arrays.equals(humanBioD.getFacialData().getData(), passpBioD.getFacialData().getData())){
             throw new BiometricVerificationFailedException("Les dades facials no concorden");
         }
         System.out.println("Verificació facial OK!");
-        if(!humanBioD.getFingerprintData().equals(passpBioD.getFingerprintData())){
+        if(!Arrays.equals(humanBioD.getFingerprintData().getData(), humanBioD.getFingerprintData().getData())){
             throw new BiometricVerificationFailedException("Les dades de les empremtes dactilars no concorden");
         }
         System.out.println("Verificació de les empremtes dactilars OK!");
@@ -149,7 +150,9 @@ public class votingKiosk {
         userData = null;
     }
 
-    public void grantExplicitConsent (char cons) {
+    public void grantExplicitConsent (char cons) throws ProceduralException {
+        if(currentPhase != 3)
+            throw new ProceduralException("grantExplicitContent executat a un temps incorrecte");
         switch (cons){
             case('C'):
             case('c'):
@@ -162,20 +165,26 @@ public class votingKiosk {
         }
         currentPhase++;
     }
-    public void readPassport () throws NotValidPassportException, PassportBiometricReadingException, NifIsNullException, NifNotValidException {
+    public void readPassport () throws NotValidPassportException, PassportBiometricReadingException, NifIsNullException, NifNotValidException, ProceduralException {
+        if(currentPhase != 4)
+            throw new ProceduralException("readPassport executat a un temps incorrecte");
         passportBiometricReader.validatePassport();
         passportData = passportBiometricReader.getPassportBiometricData();
         nif = passportBiometricReader.getNifWithOCR();
         currentPhase++;
     }
 
-    public void readFaceBiometrics () throws HumanBiometricScanningException {
-       SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
+    public void readFaceBiometrics () throws HumanBiometricScanningException, ProceduralException {
+       if(currentPhase != 5)
+           throw new ProceduralException("readFaceBiometrics executat a un temps incorrecte");
+        SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
        userData.setFacialData(facial);
        currentPhase++;
     }
     public void readFingerPrintBiometrics () throws NotEnabledException, HumanBiometricScanningException,
-            BiometricVerificationFailedException, ConnectException{
+            BiometricVerificationFailedException, ConnectException, ProceduralException {
+        if(currentPhase != 6)
+            throw new ProceduralException("readFingerPrintBiometrics executat a un temps incorrecte");
         SingleBiometricData fingerprints = humanBiometricScanner.scanFingerprintBiometrics(nif);
         userData.setFingerprintData(fingerprints);
 
