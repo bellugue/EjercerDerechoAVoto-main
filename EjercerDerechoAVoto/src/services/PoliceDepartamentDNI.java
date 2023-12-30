@@ -21,7 +21,7 @@ public class PoliceDepartamentDNI implements PoliceDepartament {
     @Override
     public boolean isDNIValid(Nif nif) {
         for(Nif current : validDNI){
-            if(current.equals(nif)){
+            if(current.getNif().equals(nif.getNif())){
                 return true;
             }
         }

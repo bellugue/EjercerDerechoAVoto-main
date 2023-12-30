@@ -5,6 +5,7 @@ import evoting.biometricdataperipherial.PassportBiometricReader;
 import evoting.biometricdataperipherial.PassportReader;
 import evoting.votingKiosk;
 import exceptions.*;
+import exceptions.biometricaldataperipherial.HumanBiometricScanningException;
 import exceptions.biometricaldataperipherial.PassportBiometricReadingException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,8 +76,13 @@ public class correctProcedure implements ProcedureTest{
 
     @Override
     @Test
-    public void readFaceBiometrics() {
-
+    public void readFaceBiometrics() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        assertEquals(vKiosk.getCurrentPhase(), 6);
     }
 
     @Override

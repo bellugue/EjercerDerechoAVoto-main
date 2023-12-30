@@ -34,6 +34,7 @@ public class votingKiosk {
     private Boolean explicitContent = false;
     public votingKiosk() {
         currentPhase=1;
+        userData = new BiometricData(null,null);
     }
 
     public void initVoting () throws ProceduralException {
@@ -165,11 +166,13 @@ public class votingKiosk {
         passportBiometricReader.validatePassport();
         passportData = passportBiometricReader.getPassportBiometricData();
         nif = passportBiometricReader.getNifWithOCR();
+        currentPhase++;
     }
 
     public void readFaceBiometrics () throws HumanBiometricScanningException {
        SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
        userData.setFacialData(facial);
+       currentPhase++;
     }
     public void readFingerPrintBiometrics () throws NotEnabledException, HumanBiometricScanningException,
             BiometricVerificationFailedException, ConnectException{
@@ -179,6 +182,7 @@ public class votingKiosk {
         verifiyBiometricData(userData, passportData);
         removeBiometricData();
         electoralOrganism.canVote(nif);
+        currentPhase++;
     }
 
     private void finalizeSession () {

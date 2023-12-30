@@ -1,6 +1,7 @@
 package procedure.biometric;
 
 import exceptions.*;
+import exceptions.biometricaldataperipherial.HumanBiometricScanningException;
 import exceptions.biometricaldataperipherial.PassportBiometricReadingException;
 
 public interface ProcedureTest {
@@ -10,7 +11,7 @@ public interface ProcedureTest {
     void setDocument() throws ProceduralException, InvalidDocumentIdentificationTypeException;
     void grantExplicitContent() throws ProceduralException, InvalidDocumentIdentificationTypeException;
     void readPassport() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException;
-    void readFaceBiometrics();
+    void readFaceBiometrics() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException;
     void readFingerPrintBiometrics();
     void initOptionsNavigator();
     void consultVotingOption();
