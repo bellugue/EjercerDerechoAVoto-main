@@ -27,4 +27,44 @@ public class ManualFunctionTest implements FunctionTest{
         vKiosk.setScrutiny(scrutiny);
         vKiosk.setLocalService(localService);
     }
+
+    @Override
+    public void setIncorrectDocumentOption() {
+
+    }
+
+    @Override
+    public void consultIncorrectVotingOption() {
+
+    }
+
+    @Override
+    public void wrongInputVotingOption() {
+
+    }
+
+    @Override
+    public void electoralOrganismConexionErrorinCanVote() {
+
+    }
+
+    @Override
+    public void electoralOrganismConexionErrorInDisableVoter() {
+
+    }
+
+    @Test
+    public void enterAccountWithInvalidUser(){
+
+    }
+
+    @Test
+    public void enterAccountWithValidUserButInvalidPassword(){
+
+    }
+
+    @Test
+    public void enterInvalidNif(){
+
+    }
 }

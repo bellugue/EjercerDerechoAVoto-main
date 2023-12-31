@@ -1,11 +1,12 @@
 package functioning;
 import evoting.votingKiosk;
-import exceptions.NifIsNullException;
-import exceptions.NifNotValidException;
-import exceptions.PasswordIsNullException;
+import exceptions.*;
+import exceptions.biometricaldataperipherial.PassportBiometricReadingException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import services.*;
+
+import java.net.ConnectException;
 
 import static org.junit.Assert.*;
 
@@ -26,5 +27,50 @@ public class BiometricFuncionTest  implements FunctionTest{
         vKiosk.setElectoralOrganism(electoralOrganism);
         vKiosk.setScrutiny(scrutiny);
         vKiosk.setLocalService(localService);
+    }
+
+    @Override
+    @Test
+    public void setIncorrectDocumentOption() {
+        assertThrows(InvalidDocumentIdentificationTypeException.class, () -> );
+    }
+
+    @Override
+    @Test
+    public void consultIncorrectVotingOption() {
+        assertThrows(InvalidVotingOptionException.class, () -> );
+    }
+
+    @Override
+    @Test
+    public void wrongInputVotingOption() {
+        assertThrows()
+    }
+
+    @Override
+    @Test
+    public void electoralOrganismConexionErrorinCanVote() {
+        assertThrows(ConnectException.class, () -> );
+    }
+
+    @Override
+    @Test
+    public void electoralOrganismConexionErrorInDisableVoter() {
+        assertThrows(ConnectException.class, () -> );
+    }
+
+    @Test
+    public void enterInvalidConsentInput(){
+        assertThrows(ExplicitConsetNotAprovedException.class, () -> );
+    }
+
+    @Test
+    public void validateNoneValidPassport(){
+        assertThrows(NotValidPassportException.class, () -> );
+    }
+
+    @Test
+    public void getCorruptedPassportBiometricData(){
+        assertThrows(PassportBiometricReadingException.class, () -> );
     }
 }

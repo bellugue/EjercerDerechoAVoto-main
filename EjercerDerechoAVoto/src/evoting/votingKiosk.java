@@ -106,7 +106,7 @@ public class votingKiosk {
         System.out.print("\nSeleccioni un partit a votar:\n");
         currentPhase++;
     }
-    public void consultVotingOption (VotingOption vopt) throws ProceduralException {
+    public void consultVotingOption (VotingOption vopt) throws ProceduralException, InvalidVotingOptionException {
         if(Biometric){
             if(currentPhase != 8)
                 throw new ProceduralException("consultVotingOption executat a un temps erroni");
@@ -116,6 +116,8 @@ public class votingKiosk {
                 throw new ProceduralException("consultVotingOption executat a un temps erroni");
         }
 
+        if(!scrutiny.getAllVotingOptions().contains(vopt))
+            throw new InvalidVotingOptionException("S'ha volgut consultar un partit no existent");
         System.out.println("Informació relacionada de " + vopt.getParty());
         System.out.println(vopt.toString());
         option = vopt;
@@ -185,7 +187,7 @@ public class votingKiosk {
         userData = null;
     }
 
-    public void grantExplicitConsent (char cons) throws ProceduralException {
+    public void grantExplicitConsent (char cons) throws ProceduralException, ExplicitConsetNotAprovedException {
         if(currentPhase != 3)
             throw new ProceduralException("grantExplicitContent executat a un temps incorrecte");
         switch (cons){
@@ -196,7 +198,7 @@ public class votingKiosk {
             case('X'):
             case('x'):
                 System.out.println("No s'ha acceptat el consentiment");
-                break;
+                throw new ExplicitConsetNotAprovedException("Explicit Content not Approved.");
         }
         currentPhase++;
     }
