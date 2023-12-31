@@ -32,7 +32,6 @@ public class votingKiosk {
     private VotingOption option;
     private boolean Biometric = false;
     private Nif nif;
-    private Boolean explicitContent = false;
     public votingKiosk() {
         currentPhase=1;
         userData = new BiometricData(null,null);
@@ -186,7 +185,8 @@ public class votingKiosk {
         System.out.println("Verificació de les dades biometriques de l'usuari OK.");
     }
     private void removeBiometricData () {
-        userData = null;
+        userData = new BiometricData(null, null);
+        passportData = new BiometricData(null, null);
     }
 
     public void grantExplicitConsent (char cons) throws ProceduralException, ExplicitConsetNotAprovedException {
@@ -201,6 +201,8 @@ public class votingKiosk {
             case('x'):
                 System.out.println("No s'ha acceptat el consentiment");
                 throw new ExplicitConsetNotAprovedException("Explicit Content not Approved.");
+            default:
+                throw new ExplicitConsetNotAprovedException("Explicit content input error");
         }
         currentPhase++;
     }
@@ -216,7 +218,7 @@ public class votingKiosk {
     public void readFaceBiometrics () throws HumanBiometricScanningException, ProceduralException {
        if(currentPhase != 5)
            throw new ProceduralException("readFaceBiometrics executat a un temps incorrecte");
-        SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
+       SingleBiometricData facial = humanBiometricScanner.scanFaceBiometrics(nif);
        userData.setFacialData(facial);
        currentPhase++;
     }
@@ -233,7 +235,11 @@ public class votingKiosk {
         currentPhase++;
     }
 
-    private void finalizeSession () {
+    public void finalizeSession () {
+        currentPhase = 1;
+        nif = null;
+        option = null;
+        Biometric = false;
 
     }
 

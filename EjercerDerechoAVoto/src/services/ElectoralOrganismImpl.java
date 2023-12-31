@@ -10,16 +10,13 @@ import java.util.HashMap;
 
 public class ElectoralOrganismImpl implements ElectoralOrganism{
     boolean connectionError = false;
-    HashMap<Nif, Boolean> counts;
+    HashMap<String, Boolean> counts;
 
     public ElectoralOrganismImpl() throws NifIsNullException, NifNotValidException {
         counts = new HashMap<>();
-        Nif nif1 = new Nif("11111111a");
-        counts.put(nif1, false);
-        Nif nif2 = new Nif("22222222a");
-        counts.put(nif2, false);
-        Nif nif3 = new Nif("33333333a");
-        counts.put(nif3, false);
+        counts.put("11111111a", false);
+        counts.put("22222222a", false);
+        counts.put("33333333a", false);
     }
 
     @Override
@@ -36,8 +33,8 @@ public class ElectoralOrganismImpl implements ElectoralOrganism{
     }
 
     private boolean isEnabledInElectoralOrganism(Nif nif) {
-        for(Nif countNif : counts.keySet()){
-            if(countNif.getNif().equals(nif.getNif())){
+        for(String countNif : counts.keySet()){
+            if(countNif.equals(nif.getNif())){
                 if(counts.get(countNif) == false){
                     return true;
                 }
@@ -52,8 +49,8 @@ public class ElectoralOrganismImpl implements ElectoralOrganism{
         if(connectionError){
             throw new ConnectException("Connection error to Electoral Organism");
         }
-
-        counts.replace(nif, false, true);
+        counts.put(nif.getNif(), true);
+        System.out.println("A");
     }
 
     @Override

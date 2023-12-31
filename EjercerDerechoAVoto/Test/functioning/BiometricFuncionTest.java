@@ -108,18 +108,58 @@ public class BiometricFuncionTest  implements FunctionTest{
         assertThrows(ConnectException.class, () -> vKiosk.confirmVotingOption('C'));
     }
 
+    @Override
     @Test
-    public void enterInvalidConsentInput(){
-        //assertThrows(ExplicitConsetNotAprovedException.class, () -> );
+    public void userHasVotedCantVoteAgain() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
+        VotingOption vO = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        vKiosk.readFingerPrintBiometrics();
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(vO);
+        vKiosk.vote();
+        vKiosk.confirmVotingOption('C');
+        vKiosk.finalizeSession();
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        vKiosk.readPassport();
+        vKiosk.readFaceBiometrics();
+        assertThrows(NotEnabledException.class, () -> vKiosk.readFingerPrintBiometrics());
     }
 
     @Test
-    public void validateNoneValidPassport(){
-        //assertThrows(NotValidPassportException.class, () -> );
+    public void enterInvalidConsentInput() throws ProceduralException, InvalidDocumentIdentificationTypeException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        assertThrows(ExplicitConsetNotAprovedException.class, () -> vKiosk.grantExplicitConsent('A'));
     }
 
     @Test
-    public void getCorruptedPassportBiometricData(){
-        //assertThrows(PassportBiometricReadingException.class, () -> );
+    public void cancelExplicitConsent() throws ProceduralException, InvalidDocumentIdentificationTypeException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        assertThrows(ExplicitConsetNotAprovedException.class, () -> vKiosk.grantExplicitConsent('X'));
+    }
+
+    @Test
+    public void validateNoneValidPassport() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        passportBiometricReader.setErrorNif();
+        assertThrows(NotValidPassportException.class, () -> vKiosk.readPassport());
+    }
+
+    @Test
+    public void getCorruptedPassportBiometricData() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException {
+        vKiosk.initVoting();
+        vKiosk.setDocument('P');
+        vKiosk.grantExplicitConsent('C');
+        passportBiometricReader.setErrorData();
+        assertThrows(PassportBiometricReadingException.class, () -> vKiosk.readPassport());
     }
 }

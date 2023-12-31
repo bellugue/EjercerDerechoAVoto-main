@@ -28,7 +28,7 @@ public class dataTest implements dataTestingIntf {
     @Override
     @Test
     public void nifIsEmpty() throws NifIsNullException {
-        assertThrows(NifIsNullException.class, () -> nif = new Nif(""));
+        assertThrows(NifNotValidException.class, () -> nif = new Nif(""));
     }
 
     @Override

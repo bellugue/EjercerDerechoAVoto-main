@@ -11,4 +11,6 @@ public interface PassportBiometricReader {
     Nif getNifWithOCR ();
     BiometricData getPassportBiometricData ()
             throws PassportBiometricReadingException;
+    void setErrorNif();
+    void setErrorData();
 }

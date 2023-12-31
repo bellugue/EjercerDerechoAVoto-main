@@ -158,7 +158,7 @@ public class correctProcedureTest implements ProcedureTests {
         vKiosk.consultVotingOption(option1);
         vKiosk.vote();
         vKiosk.confirmVotingOption('X');
-        vKiosk.consultVotingOption(option1);
+        vKiosk.consultVotingOption(option2);
         vKiosk.vote();
         vKiosk.confirmVotingOption('C');
         assertEquals(vKiosk.getCurrentPhase(), 10);

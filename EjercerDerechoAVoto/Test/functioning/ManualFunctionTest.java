@@ -1,11 +1,14 @@
 package functioning;
+import data.Nif;
+import data.Password;
+import data.VotingOption;
 import evoting.votingKiosk;
-import exceptions.NifIsNullException;
-import exceptions.NifNotValidException;
-import exceptions.PasswordIsNullException;
+import exceptions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import services.*;
+
+import java.net.ConnectException;
 
 import static org.junit.Assert.*;
 
@@ -29,42 +32,123 @@ public class ManualFunctionTest implements FunctionTest{
     }
 
     @Override
-    public void setIncorrectDocumentOption() {
-
+    @Test
+    public void setIncorrectDocumentOption() throws ProceduralException {
+        vKiosk.initVoting();
+        assertThrows(InvalidDocumentIdentificationTypeException.class, () -> vKiosk.setDocument('A'));
     }
 
     @Override
-    public void consultIncorrectVotingOption() {
-
+    @Test
+    public void consultIncorrectVotingOption() throws PasswordIsNullException, NifIsNullException, NifNotValidException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+        Nif nif = new Nif("11111111a");
+        Password testPassword = new Password("password1");
+        VotingOption option1 = new VotingOption("incorrectParty");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
+        vKiosk.enterNif(nif);
+        vKiosk.initOptionsNavigation();
+        assertThrows(InvalidVotingOptionException.class, () -> vKiosk.consultVotingOption(option1));
     }
 
     @Override
-    public void wrongInputVotingOption() {
-
+    @Test
+    public void wrongInputVotingOption() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+        Nif nif = new Nif("11111111a");
+        Password testPassword = new Password("password1");
+        VotingOption option1 = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
+        vKiosk.enterNif(nif);
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(option1);
+        vKiosk.vote();
+        assertThrows(InvalidConfirmOptionInput.class, () -> vKiosk.confirmVotingOption('A'));
     }
 
     @Override
-    public void electoralOrganismConexionErrorinCanVote() {
-
+    @Test
+    public void electoralOrganismConexionErrorinCanVote() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+        Nif nif = new Nif("11111111a");
+        Password testPassword = new Password("password1");
+        VotingOption option1 = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
+        electoralOrganism.setConnectionError();
+        assertThrows(ConnectException.class, () -> vKiosk.enterNif(nif));
     }
 
     @Override
-    public void electoralOrganismConexionErrorInDisableVoter() {
+    @Test
+    public void electoralOrganismConexionErrorInDisableVoter() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+        Nif nif = new Nif("11111111a");
+        Password testPassword = new Password("password1");
+        VotingOption option1 = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
+        vKiosk.enterNif(nif);
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(option1);
+        vKiosk.vote();
+        electoralOrganism.setConnectionError();
+        assertThrows(ConnectException.class, () -> vKiosk.confirmVotingOption('C'));
+    }
 
+    @Override
+    @Test
+    public void userHasVotedCantVoteAgain() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
+        Nif nif = new Nif("11111111a");
+        Password testPassword = new Password("password1");
+        VotingOption option1 = new VotingOption("party1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
+        vKiosk.enterNif(nif);
+        vKiosk.initOptionsNavigation();
+        vKiosk.consultVotingOption(option1);
+        vKiosk.vote();
+        vKiosk.confirmVotingOption('C');
+        vKiosk.finalizeSession();
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
     }
 
     @Test
-    public void enterAccountWithInvalidUser(){
-
+    public void enterAccountWithInvalidUser() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException {
+        Password testPassword = new Password("password1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        assertThrows(InvalidAccountException.class, () -> vKiosk.enterAccount("invalidUser", testPassword));
     }
 
     @Test
-    public void enterAccountWithValidUserButInvalidPassword(){
-
+    public void enterAccountWithValidUserButInvalidPassword() throws PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException {
+        Password testPassword = new Password("invalidPassword");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        assertThrows(InvalidAccountException.class, () -> vKiosk.enterAccount("user1", testPassword));
     }
 
     @Test
-    public void enterInvalidNif(){
-
+    public void enterInvalidNif() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException {
+        Nif nif = new Nif("12345678b");
+        Password testPassword = new Password("password1");
+        vKiosk.initVoting();
+        vKiosk.setDocument('d');
+        vKiosk.enterAccount("user1", testPassword);
+        vKiosk.confirmIdentif('C');
+        assertThrows(NotEnabledException.class, () -> vKiosk.enterNif(nif));
     }
+
 }
