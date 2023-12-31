@@ -18,7 +18,7 @@ final public class Nif {
         }
     }
 
-    private boolean nifIsValid(String nif) { //abcdefgh1
+    private boolean nifIsValid(String nif) {
 
         if(nif.length() != 9){
             return false;
@@ -31,7 +31,7 @@ final public class Nif {
             }
         }
         Character character = nif.charAt(8);
-        return Character.isLetter(character);
+        return Character.isLowerCase(character);
     }
 
     public String getNif(){

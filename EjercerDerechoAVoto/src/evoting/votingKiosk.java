@@ -139,7 +139,7 @@ public class votingKiosk {
         System.out.println("S'ha seleccionat per votar el partit " + option.getParty());
         currentPhase++;
     }
-    public void confirmVotingOption (char conf) throws ConnectException, ProceduralException {
+    public void confirmVotingOption (char conf) throws ConnectException, ProceduralException, InvalidConfirmOptionInput {
         if(Biometric){
             if(currentPhase != 10)
                 throw new ProceduralException("confirmVotingOption executat a un temps erroni");
@@ -164,6 +164,8 @@ public class votingKiosk {
                     currentPhase = 7;
                 }
                 return;
+            default:
+                throw new InvalidConfirmOptionInput("InvalidOption for ConfirmVotingOption");
         }
         scrutiny.scrutinize(option);
         electoralOrganism.disableVoter(nif);

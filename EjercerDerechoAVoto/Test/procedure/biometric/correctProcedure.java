@@ -145,7 +145,7 @@ public class correctProcedure implements ProcedureTest{
 
     @Override
     @Test
-    public void confirmVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, ExplicitConsetNotAprovedException, InvalidVotingOptionException {
+    public void confirmVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, ExplicitConsetNotAprovedException, InvalidVotingOptionException, InvalidConfirmOptionInput {
         VotingOption option = new VotingOption("party1");
         vKiosk.initVoting();
         vKiosk.setDocument('P');

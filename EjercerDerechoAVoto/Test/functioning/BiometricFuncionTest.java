@@ -31,46 +31,47 @@ public class BiometricFuncionTest  implements FunctionTest{
 
     @Override
     @Test
-    public void setIncorrectDocumentOption() {
-        assertThrows(InvalidDocumentIdentificationTypeException.class, () -> );
+    public void setIncorrectDocumentOption() throws ProceduralException {
+        vKiosk.initVoting();
+        assertThrows(InvalidDocumentIdentificationTypeException.class, () -> vKiosk.setDocument('A'));
     }
 
     @Override
     @Test
     public void consultIncorrectVotingOption() {
-        assertThrows(InvalidVotingOptionException.class, () -> );
+        //assertThrows(InvalidVotingOptionException.class, () -> );
     }
 
     @Override
     @Test
     public void wrongInputVotingOption() {
-        assertThrows();
+        //assertThrows(InvalidConfirmOptionInput.class, () -> );
     }
 
     @Override
     @Test
     public void electoralOrganismConexionErrorinCanVote() {
-        assertThrows(ConnectException.class, () -> );
+        //assertThrows(ConnectException.class, () -> );
     }
 
     @Override
     @Test
     public void electoralOrganismConexionErrorInDisableVoter() {
-        assertThrows(ConnectException.class, () -> );
+        //assertThrows(ConnectException.class, () -> );
     }
 
     @Test
     public void enterInvalidConsentInput(){
-        assertThrows(ExplicitConsetNotAprovedException.class, () -> );
+        //assertThrows(ExplicitConsetNotAprovedException.class, () -> );
     }
 
     @Test
     public void validateNoneValidPassport(){
-        assertThrows(NotValidPassportException.class, () -> );
+        //assertThrows(NotValidPassportException.class, () -> );
     }
 
     @Test
     public void getCorruptedPassportBiometricData(){
-        assertThrows(PassportBiometricReadingException.class, () -> );
+        //assertThrows(PassportBiometricReadingException.class, () -> );
     }
 }
