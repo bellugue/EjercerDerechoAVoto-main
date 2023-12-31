@@ -7,9 +7,10 @@ import exceptions.PasswordIsNullException;
 public interface dataTestingIntf {
     void init();
     void nifIsNull() throws NifIsNullException, NifNotValidException;
+    public void nifIsEmpty() throws NifIsNullException;
     void nifIsNotValid() throws NifIsNullException, NifNotValidException;
-    void nifIsValid();
+    void nifIsValid() throws NifIsNullException, NifNotValidException;
     void passwordIsNull() throws PasswordIsNullException;
-    void passwordIsEmpty();
+    void passwordIsEmpty() throws PasswordIsNullException;
     void passwordIsCorrect();
 }
