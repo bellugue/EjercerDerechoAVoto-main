@@ -51,7 +51,10 @@ public class BiometricFuncionTest  implements FunctionTest{
 
     @Override
     @Test
-    public void consultIncorrectVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, ExplicitConsetNotAprovedException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException {
+    public void consultIncorrectVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException,
+            ExplicitConsetNotAprovedException, HumanBiometricScanningException, BiometricVerificationFailedException,
+            NotEnabledException, ConnectException {
         VotingOption vO = new VotingOption("invalidParty");
         vKiosk.initVoting();
         vKiosk.setDocument('P');
@@ -65,7 +68,10 @@ public class BiometricFuncionTest  implements FunctionTest{
 
     @Override
     @Test
-    public void wrongInputVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+    public void wrongInputVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException,
+            NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException,
+            NotEnabledException, ConnectException, InvalidVotingOptionException {
         VotingOption vO = new VotingOption("party1");
         vKiosk.initVoting();
         vKiosk.setDocument('P');
@@ -81,7 +87,9 @@ public class BiometricFuncionTest  implements FunctionTest{
 
     @Override
     @Test
-    public void electoralOrganismConexionErrorinCanVote() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException {
+    public void electoralOrganismConexionErrorinCanVote() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException,
+            NotValidPassportException, HumanBiometricScanningException {
         electoralOrganism.setConnectionError();
         vKiosk.initVoting();
         vKiosk.setDocument('P');
@@ -93,7 +101,10 @@ public class BiometricFuncionTest  implements FunctionTest{
 
     @Override
     @Test
-    public void electoralOrganismConexionErrorInDisableVoter() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+    public void electoralOrganismConexionErrorInDisableVoter() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException,
+            NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException {
         VotingOption vO = new VotingOption("party1");
         vKiosk.initVoting();
         vKiosk.setDocument('P');
@@ -110,7 +121,10 @@ public class BiometricFuncionTest  implements FunctionTest{
 
     @Override
     @Test
-    public void userHasVotedCantVoteAgain() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
+    public void userHasVotedCantVoteAgain() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException,
+            NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
         VotingOption vO = new VotingOption("party1");
         vKiosk.initVoting();
         vKiosk.setDocument('P');
@@ -146,7 +160,8 @@ public class BiometricFuncionTest  implements FunctionTest{
     }
 
     @Test
-    public void validateNoneValidPassport() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException {
+    public void validateNoneValidPassport() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            ExplicitConsetNotAprovedException {
         vKiosk.initVoting();
         vKiosk.setDocument('P');
         vKiosk.grantExplicitConsent('C');
@@ -155,7 +170,9 @@ public class BiometricFuncionTest  implements FunctionTest{
     }
 
     @Test
-    public void getCorruptedPassportBiometricData() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException {
+    public void getCorruptedPassportBiometricData() throws ProceduralException, InvalidDocumentIdentificationTypeException,
+            ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException,
+            NotValidPassportException, HumanBiometricScanningException {
         vKiosk.initVoting();
         vKiosk.setDocument('P');
         vKiosk.grantExplicitConsent('C');

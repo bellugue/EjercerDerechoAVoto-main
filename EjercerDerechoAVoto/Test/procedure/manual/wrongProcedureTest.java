@@ -56,39 +56,50 @@ public class wrongProcedureTest implements ProcedureTests{
 
     @Override
     @Test
-    public void confirmIdetifTest() throws ProceduralException, InvalidDNIDocumException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException {
+    public void confirmIdetifTest() throws ProceduralException, InvalidDNIDocumException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException {
         assertThrows(ProceduralException.class, () -> vKiosk.confirmIdentif('C'));
     }
 
     @Override
     @Test
-    public void enterNifTest() throws ProceduralException, NifIsNullException, NifNotValidException, NotEnabledException, ConnectException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException {
+    public void enterNifTest() throws ProceduralException, NifIsNullException, NifNotValidException, NotEnabledException,
+            ConnectException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException,
+            InvalidDNIDocumException {
         Nif nif = new Nif("11111111a");
         assertThrows(ProceduralException.class, () -> vKiosk.enterNif(nif));
     }
 
     @Override
     @Test
-    public void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException,
+            PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException,
+            NotEnabledException, ConnectException {
         assertThrows(ProceduralException.class, () -> vKiosk.initOptionsNavigation());
     }
 
     @Override
     @Test
-    public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException {
         VotingOption option = new VotingOption("party1");
         assertThrows(ProceduralException.class, () -> vKiosk.consultVotingOption(option));
     }
 
     @Override
     @Test
-    public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException {
         assertThrows(ProceduralException.class, () -> vKiosk.vote());
     }
 
     @Override
     @Test
-    public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException {
         assertThrows(ProceduralException.class, () -> vKiosk.confirmVotingOption('C'));
     }
 }

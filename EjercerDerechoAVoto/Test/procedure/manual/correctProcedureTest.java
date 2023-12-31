@@ -48,7 +48,8 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void enterAccountTest() throws ProceduralException, PasswordIsNullException, InvalidAccountException, InvalidDocumentIdentificationTypeException {
+    public void enterAccountTest() throws ProceduralException, PasswordIsNullException, InvalidAccountException,
+            InvalidDocumentIdentificationTypeException {
         Password testPassword = new Password("password1");
         vKiosk.initVoting();
         vKiosk.setDocument('d');
@@ -58,7 +59,8 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void confirmIdetifTest() throws ProceduralException, InvalidDNIDocumException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException {
+    public void confirmIdetifTest() throws ProceduralException, InvalidDNIDocumException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException {
         Password testPassword = new Password("password1");
         vKiosk.initVoting();
         vKiosk.setDocument('d');
@@ -69,7 +71,9 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void enterNifTest() throws ProceduralException, NifIsNullException, NifNotValidException, NotEnabledException, ConnectException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException {
+    public void enterNifTest() throws ProceduralException, NifIsNullException, NifNotValidException, NotEnabledException,
+            ConnectException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException,
+            InvalidDNIDocumException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         vKiosk.initVoting();
@@ -81,7 +85,9 @@ public class correctProcedureTest implements ProcedureTests {
     }
     @Override
     @Test
-    public void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         vKiosk.initVoting();
@@ -95,7 +101,9 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+    public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option = new VotingOption("party1");
@@ -111,7 +119,9 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+    public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option = new VotingOption("party1");
@@ -128,7 +138,9 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
+    public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option = new VotingOption("party1");
@@ -144,7 +156,9 @@ public class correctProcedureTest implements ProcedureTests {
         assertEquals(vKiosk.getCurrentPhase(), 10);
     }
     @Test
-    public void userNoConfirmsOptionFirstTime() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
+    public void userNoConfirmsOptionFirstTime() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("party1");

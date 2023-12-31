@@ -11,17 +11,29 @@ public interface ProcedureTests {
 
     void setDocumentTest() throws InvalidDocumentIdentificationTypeException, ProceduralException;
 
-    void enterAccountTest() throws ProceduralException, PasswordIsNullException, InvalidAccountException, InvalidDocumentIdentificationTypeException;
+    void enterAccountTest() throws ProceduralException, PasswordIsNullException, InvalidAccountException,
+            InvalidDocumentIdentificationTypeException;
 
-    void confirmIdetifTest() throws ProceduralException, InvalidDNIDocumException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException;
+    void confirmIdetifTest() throws ProceduralException, InvalidDNIDocumException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException;
 
-    void enterNifTest() throws ProceduralException, NifIsNullException, NifNotValidException, NotEnabledException, ConnectException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException;
+    void enterNifTest() throws ProceduralException, NifIsNullException, NifNotValidException, NotEnabledException,
+            ConnectException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException,
+            InvalidDNIDocumException;
 
-    void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException;
+    void initOptionNavegationTest() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException;
 
-    void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException;
+    void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException;
 
-    void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException;
+    void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException;
 
-    void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput;
+    void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException,
+            ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput;
     }

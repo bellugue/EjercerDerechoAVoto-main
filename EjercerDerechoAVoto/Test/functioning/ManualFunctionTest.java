@@ -40,7 +40,9 @@ public class ManualFunctionTest implements FunctionTest{
 
     @Override
     @Test
-    public void consultIncorrectVotingOption() throws PasswordIsNullException, NifIsNullException, NifNotValidException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void consultIncorrectVotingOption() throws PasswordIsNullException, NifIsNullException, NifNotValidException,
+            ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException,
+            NotEnabledException, ConnectException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("incorrectParty");
@@ -55,7 +57,9 @@ public class ManualFunctionTest implements FunctionTest{
 
     @Override
     @Test
-    public void wrongInputVotingOption() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+    public void wrongInputVotingOption() throws NifIsNullException, NifNotValidException, PasswordIsNullException,
+            ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException,
+            NotEnabledException, ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("party1");
@@ -72,7 +76,9 @@ public class ManualFunctionTest implements FunctionTest{
 
     @Override
     @Test
-    public void electoralOrganismConexionErrorinCanVote() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException {
+    public void electoralOrganismConexionErrorinCanVote() throws NifIsNullException, NifNotValidException, PasswordIsNullException,
+            ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException,
+            NotEnabledException, ConnectException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("party1");
@@ -86,7 +92,9 @@ public class ManualFunctionTest implements FunctionTest{
 
     @Override
     @Test
-    public void electoralOrganismConexionErrorInDisableVoter() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
+    public void electoralOrganismConexionErrorInDisableVoter() throws NifIsNullException, NifNotValidException, PasswordIsNullException,
+            ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException,
+            NotEnabledException, ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("party1");
@@ -104,7 +112,9 @@ public class ManualFunctionTest implements FunctionTest{
 
     @Override
     @Test
-    public void userHasVotedCantVoteAgain() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
+    public void userHasVotedCantVoteAgain() throws NifIsNullException, NifNotValidException, PasswordIsNullException,
+            ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException,
+            NotEnabledException, ConnectException, InvalidVotingOptionException, InvalidConfirmOptionInput {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("party1");
@@ -125,7 +135,8 @@ public class ManualFunctionTest implements FunctionTest{
     }
 
     @Test
-    public void enterAccountWithInvalidUser() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException {
+    public void enterAccountWithInvalidUser() throws NifIsNullException, NifNotValidException, PasswordIsNullException,
+            ProceduralException, InvalidDocumentIdentificationTypeException {
         Password testPassword = new Password("password1");
         vKiosk.initVoting();
         vKiosk.setDocument('d');
@@ -133,7 +144,8 @@ public class ManualFunctionTest implements FunctionTest{
     }
 
     @Test
-    public void enterAccountWithValidUserButInvalidPassword() throws PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException {
+    public void enterAccountWithValidUserButInvalidPassword() throws PasswordIsNullException, ProceduralException,
+            InvalidDocumentIdentificationTypeException {
         Password testPassword = new Password("invalidPassword");
         vKiosk.initVoting();
         vKiosk.setDocument('d');
@@ -141,7 +153,8 @@ public class ManualFunctionTest implements FunctionTest{
     }
 
     @Test
-    public void enterInvalidNif() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException {
+    public void enterInvalidNif() throws NifIsNullException, NifNotValidException, PasswordIsNullException, ProceduralException,
+            InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException {
         Nif nif = new Nif("12345678b");
         Password testPassword = new Password("password1");
         vKiosk.initVoting();
