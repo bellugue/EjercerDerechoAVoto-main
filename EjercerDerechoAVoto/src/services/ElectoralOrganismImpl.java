@@ -56,8 +56,9 @@ public class ElectoralOrganismImpl implements ElectoralOrganism{
         counts.replace(nif, false, true);
     }
 
-    public void setConnectionError(boolean connectionError) {
-        this.connectionError = connectionError;
+    @Override
+    public void setConnectionError() {
+        this.connectionError = true;
     }
 
 }

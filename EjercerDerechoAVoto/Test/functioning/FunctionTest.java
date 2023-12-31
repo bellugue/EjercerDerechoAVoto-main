@@ -1,19 +1,21 @@
 package functioning;
 
-import exceptions.NifIsNullException;
-import exceptions.NifNotValidException;
-import exceptions.PasswordIsNullException;
-import exceptions.ProceduralException;
+import exceptions.*;
+import exceptions.biometricaldataperipherial.BiometricVerificationFailedException;
+import exceptions.biometricaldataperipherial.HumanBiometricScanningException;
+import exceptions.biometricaldataperipherial.PassportBiometricReadingException;
+
+import java.net.ConnectException;
 
 public interface FunctionTest {
 
     void initialize() throws NifIsNullException, NifNotValidException, PasswordIsNullException;
 
     void setIncorrectDocumentOption() throws ProceduralException;
-    void consultIncorrectVotingOption();
-    void wrongInputVotingOption();
-    void electoralOrganismConexionErrorinCanVote();
-    void electoralOrganismConexionErrorInDisableVoter();
+    void consultIncorrectVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, ExplicitConsetNotAprovedException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException;
+    void wrongInputVotingOption() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, InvalidVotingOptionException;
+    void electoralOrganismConexionErrorinCanVote() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException;
+    void electoralOrganismConexionErrorInDisableVoter() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException, NifIsNullException, PassportBiometricReadingException, NifNotValidException, NotValidPassportException, HumanBiometricScanningException, BiometricVerificationFailedException, NotEnabledException, ConnectException, InvalidVotingOptionException;
 
 
 
