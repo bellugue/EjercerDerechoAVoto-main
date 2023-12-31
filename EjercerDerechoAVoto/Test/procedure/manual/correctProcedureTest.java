@@ -95,7 +95,7 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException{
+    public void consultVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option = new VotingOption("party1");
@@ -111,7 +111,7 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException{
+    public void vote() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option = new VotingOption("party1");
@@ -128,7 +128,7 @@ public class correctProcedureTest implements ProcedureTests {
 
     @Override
     @Test
-    public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException{
+    public void confirmVotingOption() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option = new VotingOption("party1");
@@ -144,7 +144,7 @@ public class correctProcedureTest implements ProcedureTests {
         assertEquals(vKiosk.getCurrentPhase(), 10);
     }
     @Test
-    public void userNoConfirmsOptionFirstTime() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException{
+    public void userNoConfirmsOptionFirstTime() throws ProceduralException, NifIsNullException, NifNotValidException, PasswordIsNullException, InvalidDocumentIdentificationTypeException, InvalidAccountException, InvalidDNIDocumException, NotEnabledException, ConnectException, InvalidVotingOptionException {
         Nif nif = new Nif("11111111a");
         Password testPassword = new Password("password1");
         VotingOption option1 = new VotingOption("party1");

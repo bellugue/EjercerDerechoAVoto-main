@@ -44,7 +44,7 @@ public class BiometricFuncionTest  implements FunctionTest{
     @Override
     @Test
     public void wrongInputVotingOption() {
-        assertThrows()
+        assertThrows();
     }
 
     @Override
