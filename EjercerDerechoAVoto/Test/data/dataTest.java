@@ -27,7 +27,7 @@ public class dataTest implements dataTestingIntf {
 
     @Override
     @Test
-    public void nifIsEmpty() throws NifIsNullException {
+    public void nifIsEmpty() throws NifNotValidException {
         assertThrows(NifNotValidException.class, () -> nif = new Nif(""));
     }
 
@@ -57,7 +57,7 @@ public class dataTest implements dataTestingIntf {
 
     @Override
     @Test
-    public void passwordIsCorrect() {
-
+    public void passwordIsValid() throws PasswordIsNullException {
+        password = new Password("testing1");
     }
 }

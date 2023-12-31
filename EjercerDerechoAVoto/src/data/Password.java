@@ -6,14 +6,17 @@ final public class Password {
     private final String Password;
 
     public Password(String password) throws PasswordIsNullException {
-        if (passwordIsValid(password))
+        if (passwordIsValid(password)) {
             this.Password = password;
-        else
+
+        } else {
             throw new PasswordIsNullException("Password is null");
+        }
     }
 
-    private boolean passwordIsValid(String password){
-        return password != null || password != "";
+    private boolean passwordIsValid(String password) {
+        return password != null && password != "";
+
     }
 
     public String getPassword(){
