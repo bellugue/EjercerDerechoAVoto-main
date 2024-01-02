@@ -57,6 +57,18 @@ public class dataTest implements dataTestingIntf {
 
     @Override
     @Test
+    public void passwordHasNotDigit() throws PasswordIsWrongException {
+        assertThrows(PasswordIsWrongException.class, () -> password = new Password("aaaa"));
+    }
+
+    @Override
+    @Test
+    public void passwordHasNotChar() throws PasswordIsWrongException {
+        assertThrows(PasswordIsWrongException.class, () -> password = new Password("1111"));
+    }
+
+    @Override
+    @Test
     public void passwordIsValid() throws PasswordIsWrongException {
         password = new Password("testing1");
     }
