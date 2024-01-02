@@ -3,13 +3,11 @@ import data.VotingOption;
 import evoting.votingKiosk;
 import exceptions.NifIsNullException;
 import exceptions.NifNotValidException;
-import exceptions.PasswordIsNullException;
+import exceptions.PasswordIsWrongException;
 import exceptions.ProceduralException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import services.*;
-
-import java.net.ConnectException;
 
 import static org.junit.Assert.*;
 
@@ -21,7 +19,7 @@ public class wrongProcedure implements ProcedureTest{
 
     @BeforeEach
     @Override
-    public void initialize() throws NifIsNullException, NifNotValidException, PasswordIsNullException {
+    public void initialize() throws NifIsNullException, NifNotValidException, PasswordIsWrongException {
         electoralOrganism = new ElectoralOrganismImpl();
         localService = new LocalServiceImpl();
         scrutiny = new ScrutinyImpl();

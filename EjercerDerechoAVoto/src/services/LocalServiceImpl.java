@@ -2,14 +2,14 @@ package services;
 
 import data.Password;
 import exceptions.InvalidAccountException;
-import exceptions.PasswordIsNullException;
+import exceptions.PasswordIsWrongException;
 
 import java.util.HashMap;
 
 public class LocalServiceImpl implements LocalService{
     private HashMap<String, Password> validAccounts;
 
-    public LocalServiceImpl() throws PasswordIsNullException {
+    public LocalServiceImpl() throws PasswordIsWrongException {
         validAccounts = new HashMap<>();
         Password password1 = new Password("password1");
         validAccounts.put("user1", password1);

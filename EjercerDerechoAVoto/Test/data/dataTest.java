@@ -2,7 +2,7 @@ package data;
 
 import exceptions.NifIsNullException;
 import exceptions.NifNotValidException;
-import exceptions.PasswordIsNullException;
+import exceptions.PasswordIsWrongException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -45,19 +45,19 @@ public class dataTest implements dataTestingIntf {
 
     @Override
     @Test
-    public void passwordIsNull() throws PasswordIsNullException {
-        assertThrows(PasswordIsNullException.class, () -> password = new Password(null));
+    public void passwordIsNull() throws PasswordIsWrongException {
+        assertThrows(PasswordIsWrongException.class, () -> password = new Password(null));
     }
 
     @Override
     @Test
-    public void passwordIsEmpty() throws PasswordIsNullException {
-        assertThrows(PasswordIsNullException.class, () -> password = new Password(""));
+    public void passwordIsEmpty() throws PasswordIsWrongException {
+        assertThrows(PasswordIsWrongException.class, () -> password = new Password(""));
     }
 
     @Override
     @Test
-    public void passwordIsValid() throws PasswordIsNullException {
+    public void passwordIsValid() throws PasswordIsWrongException {
         password = new Password("testing1");
     }
 }

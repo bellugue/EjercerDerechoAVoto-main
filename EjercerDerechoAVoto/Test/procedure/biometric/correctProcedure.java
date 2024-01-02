@@ -27,7 +27,7 @@ public class correctProcedure implements ProcedureTest{
 
     @BeforeEach
     @Override
-    public void initialize() throws NifIsNullException, NifNotValidException, PasswordIsNullException {
+    public void initialize() throws NifIsNullException, NifNotValidException, PasswordIsWrongException {
         electoralOrganism = new ElectoralOrganismImpl();
         localService = new LocalServiceImpl();
         scrutiny = new ScrutinyImpl();

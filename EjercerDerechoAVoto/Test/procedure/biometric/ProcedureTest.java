@@ -9,7 +9,7 @@ import java.net.ConnectException;
 
 public interface ProcedureTest {
 
-    void initialize() throws NifIsNullException, NifNotValidException, PasswordIsNullException;
+    void initialize() throws NifIsNullException, NifNotValidException, PasswordIsWrongException;
     void iniVoting() throws ProceduralException;
     void setDocument() throws ProceduralException, InvalidDocumentIdentificationTypeException;
     void grantExplicitContent() throws ProceduralException, InvalidDocumentIdentificationTypeException, ExplicitConsetNotAprovedException;
